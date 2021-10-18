@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import * as React from 'react';
 
 import JsonPreview from '@/components/JsonPreview';
@@ -7,7 +7,7 @@ import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
 import Seo from '@/components/Seo';
 
-import { PokemonData, PokemonDetail } from '@/types/pokemon';
+import { PokemonDetail } from '@/types/pokemon';
 
 export default function PokemonPage({
   pokemonDetail,
@@ -25,13 +25,13 @@ export default function PokemonPage({
       <main>
         <section className='bg-gray-100'>
           <div className='min-h-screen py-20 layout'>
-            <h1>Pokemon Single Page: {pokemonName}</h1>
-            <CustomLink className='mt-2' href='/ssg'>
-              ← Back to Get Static Props Demo
+            <h1>Pokemon Single Page Using SSR: {pokemonName}</h1>
+            <CustomLink className='mt-4' href='/ssr'>
+              ← Back to SSR Demo
             </CustomLink>
 
             <p className='mt-4 underline'>
-              Data Fetched on last build: {new Date(date).toLocaleString()}
+              Data Fetched before each visit: {new Date(date).toLocaleString()}
             </p>
 
             <div className='mt-4'>
@@ -44,25 +44,7 @@ export default function PokemonPage({
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Get all of the paths using the same API as before
-  // This will be run on build
-
-  const res = await axios.get<PokemonData>(
-    'https://pokeapi.co/api/v2/pokemon?limit=10'
-  );
-
-  const pokemonParams = res.data.results.map((datum) => ({
-    params: { name: datum.name },
-  }));
-
-  return {
-    paths: pokemonParams,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   // Context.params is the route we are visiting
   console.log(context.params);
   const pokemonName = context.params?.name;

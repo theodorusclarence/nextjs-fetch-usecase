@@ -30,12 +30,15 @@ export default function IndexPage() {
               <h2>Page Demo List:</h2>
               <ul className='flex flex-col items-start mt-2 space-y-2'>
                 <li>
+                  <CustomLink href='/csr'>CSR (useEffect)</CustomLink>
+                </li>
+                <li>
                   <CustomLink href='/ssg'>
                     SSG (getStaticProps + getStaticPaths)
                   </CustomLink>
                 </li>
                 <li>
-                  <CustomLink href='/csr'>CSR (useEffect)</CustomLink>
+                  <CustomLink href='/ssr'>SSR (getServerSideProps)</CustomLink>
                 </li>
                 <li>
                   <CustomLink href='/isr'>

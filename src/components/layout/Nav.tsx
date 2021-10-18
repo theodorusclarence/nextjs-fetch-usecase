@@ -3,8 +3,10 @@ import Link from 'next/link';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 const links = [
-  { href: '/ssg', label: 'SSG' },
   { href: '/csr', label: 'CSR' },
+  { href: '/ssg', label: 'SSG' },
+  { href: '/ssr', label: 'SSR' },
+  { href: '/isr', label: 'ISR' },
 ];
 
 export default function Nav() {
