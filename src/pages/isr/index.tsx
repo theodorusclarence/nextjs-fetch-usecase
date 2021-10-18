@@ -22,7 +22,8 @@ export default function ISRPage({ stargazers }: { stargazers: StarGazers[] }) {
             <h1>Repo Stargazers (using ISR)</h1>
             <p className='mt-2 text-gray-700'>
               Try to star this repo (yes this is intentional to bump up my stars
-              😂). Kindly keep it starred if you like this blog post and demo!
+              😂). <strong>Kindly keep it starred</strong> if you like this blog
+              post and demo!
             </p>
             <ButtonLink
               className='mt-2'
@@ -30,6 +31,11 @@ export default function ISRPage({ stargazers }: { stargazers: StarGazers[] }) {
             >
               Star this repo
             </ButtonLink>
+            <p className='mt-2 text-gray-700'>
+              Bear in mind it took about 10 seconds from the Github API to take
+              changes. Refresh <strong>twice</strong> after 10 second to see
+              changes.
+            </p>
 
             <div className='mt-8'>
               <h2>Stargazers: {stargazers.length}</h2>
@@ -61,8 +67,11 @@ export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get<StarGazers[]>(
     'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=1&per_page=100'
   );
+  const res2 = await axios.get<StarGazers[]>(
+    'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=2&per_page=100'
+  );
 
-  const stargazers = res.data.map((datum) =>
+  const stargazers = [...res.data, ...res2.data].map((datum) =>
     pick(datum, ['login', 'html_url', 'avatar_url'])
   );
 
