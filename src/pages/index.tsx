@@ -37,6 +37,11 @@ export default function IndexPage() {
                 <li>
                   <CustomLink href='/csr'>CSR (useEffect)</CustomLink>
                 </li>
+                <li>
+                  <CustomLink href='/isr'>
+                    ISR (getStaticProps + revalidate)
+                  </CustomLink>
+                </li>
               </ul>
             </nav>
           </div>
