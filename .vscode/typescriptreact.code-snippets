@@ -56,19 +56,20 @@
     "prefix": "np",
     "body": [
       "import * as React from 'react';\n",
+      "import Layout from '@/components/layout/Layout';",
       "import Seo from '@/components/Seo';\n",
       "export default function ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page() {",
       "  return (",
-      "    <>",
+      "    <Layout>",
       "      <Seo templateTitle='${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}' />\n",
       "      <main>\n",
-      "        <section className=''>",
-      "          <div className='layout'>",
+      "        <section className='bg-gray-100'>",
+      "          <div className='layout py-20 min-h-screen'>",
       "            $0",
       "          </div>",
       "        </section>",
       "      </main>",
-      "    </>",
+      "    </Layout>",
       "  )",
       "}"
     ]
@@ -89,7 +90,7 @@
   "Get Static Props": {
     "prefix": "gsp",
     "body": [
-      "export const getServerSideProps: GetServerSideProps = async (context) => {",
+      "export const getStaticProps: GetStaticProps = async (context) => {",
       "  return {",
       "    props: {}",
       "  };",

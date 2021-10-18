@@ -25,3 +25,11 @@ export function openGraph({
     ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
   }`;
 }
+
+/**
+ * Simulate Loading
+ * @param ms waiting time in milliseconds
+ */
+export function simulateGet(ms: number): Promise<unknown> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
