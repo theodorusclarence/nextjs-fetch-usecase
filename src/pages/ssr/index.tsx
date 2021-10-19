@@ -18,7 +18,7 @@ export default function SSRPage({ pokemons }: { pokemons: Pokemon[] }) {
           <div className='min-h-screen py-20 layout'>
             <h1>Get Server Side Props</h1>
             <code className='mt-2 text-gray-800'>
-              https://pokeapi.co/api/v2/pokemon?limit=10
+              https://pokeapi.co/api/v2/pokemon?limit=100
             </code>
 
             <div className='mt-4'>
