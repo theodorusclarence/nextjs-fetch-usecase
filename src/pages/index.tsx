@@ -21,7 +21,7 @@ export default function IndexPage() {
               <CustomLink href='https://github.com/theodorusclarence/nextjs-fetch-usecase'>
                 See the repository
               </CustomLink>
-              <CustomLink href='https://github.com/theodorusclarence/nextjs-fetch-usecase'>
+              <CustomLink href='https://theodorusclarence.com/blog/nextjs-fetch-usecase'>
                 See the blog post for full explanation
               </CustomLink>
             </div>
