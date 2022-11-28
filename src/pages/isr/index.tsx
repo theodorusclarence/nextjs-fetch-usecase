@@ -69,10 +69,27 @@ export const getStaticProps: GetStaticProps = async () => {
   const res2 = await axios.get<StarGazers[]>(
     'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=2&per_page=100'
   );
-
-  const stargazers = [...res.data, ...res2.data].map((datum) =>
-    pick(datum, ['login', 'html_url', 'avatar_url'])
+  const res3 = await axios.get<StarGazers[]>(
+    'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=3&per_page=100'
   );
+  const res4 = await axios.get<StarGazers[]>(
+    'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=4&per_page=100'
+  );
+  const res5 = await axios.get<StarGazers[]>(
+    'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=5&per_page=100'
+  );
+  const res6 = await axios.get<StarGazers[]>(
+    'https://api.github.com/repos/theodorusclarence/theodorusclarence.com/stargazers?page=6&per_page=100'
+  );
+
+  const stargazers = [
+    ...res.data,
+    ...res2.data,
+    ...res3.data,
+    ...res4.data,
+    ...res5.data,
+    ...res6.data,
+  ].map((datum) => pick(datum, ['login', 'html_url', 'avatar_url']));
 
   return {
     props: { stargazers },
