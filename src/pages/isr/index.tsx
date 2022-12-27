@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import axios from 'axios';
 import { pick } from 'lodash';
 import { GetStaticProps } from 'next';
@@ -6,7 +7,6 @@ import * as React from 'react';
 import Layout from '@/components/layout/Layout';
 import ButtonLink from '@/components/links/ButtonLink';
 import CustomLink from '@/components/links/CustomLink';
-import NextImage from '@/components/NextImage';
 import Seo from '@/components/Seo';
 
 import { StarGazers } from '@/types/github';
@@ -42,13 +42,10 @@ export default function ISRPage({ stargazers }: { stargazers: StarGazers[] }) {
               <ul className='flex flex-wrap gap-2 mt-4'>
                 {stargazers.map(({ login, avatar_url, html_url }) => (
                   <li key={login} className='flex items-center gap-2'>
-                    <NextImage
-                      useSkeleton
+                    <img
                       className='w-6 overflow-hidden rounded-full'
                       src={avatar_url}
                       alt={`${login}'s avatar`}
-                      width='400'
-                      height='400'
                     />
                     <CustomLink href={html_url}>{login}</CustomLink>
                   </li>
